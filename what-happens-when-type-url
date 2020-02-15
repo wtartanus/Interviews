@@ -1,0 +1,12 @@
+1. The browser checks the cache for a DNS record to find the corresponding IP
+    address of url.
+    - checks the browser cache.
+    - checks cache in OS
+    - checks router cache 
+2. If the requested URL is not in the cache, ISP's DNS server initiates a DNS query
+   to find the IP address of the server that hosts url.
+3. Browser initiates a TCP connection with the server.
+4. The browser sends a HTTP request to the web server.
+5. The server handles the request and sends back a response
+6. The server sends out an HTTP response 
+7. The browser displays the HTML content
