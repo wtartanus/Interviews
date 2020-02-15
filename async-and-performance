@@ -1,0 +1,81 @@
+You may have heard that it's possible to make synchronous Ajax requests. While that's 
+technically true, you should never, ever do it, under any circumstances, because
+it locks the browser UI (buttons, menus, scrolling, ets.) and prevents any user interaction
+whatsoever. This is a terrible idea, and should always be avoided.
+
+EventLoop is an array that acts as a queue (first-in, first-out)
+
+Our brains plan things out in sequential, blocking, single-threaded semantic ways, but Callbacks
+express asynchonous flow in a rather nonlinear, nonsequential way, which makes reasoning
+properly about such code much harder. Bad to reason about code is bad code
+that leads to bugs.
+
+Callbacks suffer from inversion of control
+
+Callbacks trust issues:
+    - call the callback too early
+    - call the callback too late (or never)
+    - call the callback too few or too many times 
+    - fail to pass along any necessary environment/parameters
+    - swallow any errors/exceptions that may happen
+
+Promis.all() takes an array of promises, and returns a new promise that waits 
+on them all to finish
+
+Promises are an easily repeatable mechanism for encapsulating and composing future 
+values.
+Promises don't get rid of callbacks, they just redirect the orchestration of those
+callbacks to a trustable intermediary mechanism that sits between us and another utility.
+
+Promise chains also begin to address (though certainly not perfectly) a better way
+of expressing async flow in sequential fashion, which helps our brains plan and 
+maintain async JS code better.
+
+As of ES6, there's a new concept layered on top of the event loop queue, called 
+the "Job queue". 
+So, the best way to think about this that I've found is that the "Job queue" is a 
+queue hanging off the end of every tick in the event loop queue. certainly
+async-implied action that may occur during a tick of the event loop will not cause a 
+whole new event to be added to the event loop queue, but will instead add an intermediary
+(aka Job) to the end of the current tick's Job queue.
+
+ES6 introduces a new type of function that does not behave with the run-to-completion
+behavior. This new type of function is called a "generator".
+
+Generators are new ES6 function type that does not run-to-completion like normal functions.
+Instead, the generator can be paused in mid-completion (entirely preserving its state), and it 
+can later be resumed from where it left off.
+This pause/resume interchange is cooperativer rather than preemptive, which means that the 
+generator has the sole capability to apuse itself, using the yield keyword, and yet the 
+iterator that controls the generator has the sole capability (via next(...)) to resume 
+generator.
+The yield/next(...) duality is not just a control mechanism, it's actually a two-way 
+message passing mechanism. A yield expression essentially pauses waiting for a value,
+and the next(...) call passes a value (or implicit undefined) back to that paused yield 
+expression. 
+The key benefit of generators related to async flow control is that the code inside a 
+generator expresses a sequence of steps for the task in a naturally sync/sequential fashion.
+The trick is that we essentially hide potential asynchrony behind the yield keyword -- 
+moving the asynchrony to the code where the generator's iterator is controlled.
+In other words, generators preserve a sequential, synchronous, blocking code pattern
+for async code, which lets our brains reason about the code much more naturally, addressing one 
+of the two key drawbacks of callback-based async.
+
+Common uses for Web Workers:
+    - Processing intensive math calculations
+    - Sorting large data sets 
+    - Data operations (compression, audo analysis, image pixel manipulations, etc.)
+    - High-traffic network communications
+
+Web workers let you run a JS file (aka program) in a separate thread using async events
+to message between the threads. The're wonderful for offlaoding long-running or resource-
+intensive tasks to a different thread, leaving the main UI thread more responsive.
+
+SIMD proposes to map CPU-level parallel math operations to JavaScript APIs for high 
+performance data-parallel operation, like number processing on large data sets.
+
+Tail call optimization (TCO) is a required optimization as of ES6 that will make some rexursive 
+patterns practical in JS where they would have been impossible otherwise. TCO allows a function
+call in the tail position of another function to execute without needing any extra resources,
+which means the engine no longer needs to place arbitrary restricions on call stack 
+depth for recursive algorithms.
