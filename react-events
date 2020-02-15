@@ -1,0 +1,14 @@
+You cannot return false to prevent default behavior in React. You must call
+preventDefault explicitly.
+
+event is synthetic event. React defines these synthetic events according to the
+W3C spec, so you don't need to worry about cross-browser compatibility.
+
+SyntheticEvent - a cross browser wrapper around the browser native event. It has 
+the same interface as the browser's native event, except the events work 
+identically acros all browsers.
+
+Event Pooling - the synthetic event is pooled. This means that the SyntheticEvent
+object will be reused and all properties will be nullified after the event 
+callback has been invoked. This is for performance reasons. As such, you 
+cannot access the event in an asymchrous way.
