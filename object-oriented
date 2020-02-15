@@ -1,0 +1,15 @@
+Inheritance
+ is the proccess of creating new classes, called derived classes, from base classes where an 'is-a' relationship exists.
+ The derived class extends from the base class in order to inherit its properties.
+
+Polymorphism
+ is the ability of an object to take on many forms. For example, square, rectangle, circle and triangle classes can have
+ the same parent class Shapes, but each class can have its own method named drawShape();
+
+Abstraction
+ in OOP refers to showing only the essential features of an object to the user and hiding the other details to reduce
+ complexity.
+
+Encapsulation
+ in OOP refers to biding the data and the methods to manipulate that data together in a single unit (class).
+ This is normally done to hide the state and representation of an object from outside.
