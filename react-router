@@ -1,0 +1,20 @@
+Browser Router - a router that uses HTML5 history API (pushState, replaceState 
+and the popstate event) to keep your UI in sync with the URL.
+
+HashRouter - a router that uses the hash portion of the URL 
+(i.e. window.location.hash) to keep your UI in sync with the URL.
+
+MemoryRouter - a router that keeps the history of your 'URL' in MemoryRouter
+(does not read or write to the address bar). Useful in tests and
+non-browser environments like React Native.
+
+NativeRouter - a router for iOS and Android apps built with React Native
+
+StaticRouter - a router that never changes location
+
+Switch - renders the first child Route or Redirect that matches the location.
+
+WithRouter - you can get access to the history objects properties and the closest
+Routes's match via the withRouter higer-order component. WithRouter will pass 
+updated match, location, and history props to the wrapped component whenever 
+it renders
