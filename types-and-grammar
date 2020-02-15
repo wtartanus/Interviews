@@ -1,0 +1,43 @@
+In JavaScript, variables don't have types -- values have types. Variables can 
+hold any value, at any time.
+
+Data types
+ primitive is data that is not an object and has no methods. All primitives are immutable.
+  boolean - logical type that can have only values true or false
+  null - represents a reference that points, generally intentionally, to a nonexistent or invalid object or address
+  undefined - is assigned to variables that have just been declared
+  number - numeric data type
+  bigInt - is a numeric data type that can represent integers in the aritrary precision format.
+  string - is a sequence of characters used to represent text
+  symbol - represents unique identifier
+Object 
+ refers to data structure containing data and instruction for working with the data.
+
+
+Using delete on an array value will remove that slot from the array, but 
+even if you remove the final element, it does not update the length property.
+
+Friends don't let friends overrride undefined. Ever.
+
+Simple values (aka scalar primitives) are always assigned/passed by value-copy
+Compound values -- objects (including arrays, and all boxed object wrappers)
+and functions -- always crate a copy of the referenece on assignment or passing.
+
+Converting a value from one type to another is ofthen called "type casting" when
+done explicitly, and "coercion" when done implicitly.
+
+JavaScript coercions always result in one of the scalar primitive values, like
+string, number, or boolean
+
+Falsy values
+  - undefined
+  - null
+  - false 
+  - +0, -0, NaN
+  - ""
+
+== allows coercion in the equality comparison and === disallows coercion
+
+NaN is never equal to itself
++0 and -0 are equal to each other
+
