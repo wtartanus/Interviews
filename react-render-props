@@ -1,0 +1,1 @@
+A component with a render takes a function that returns a React element and calls it instead of implementing its own render logic
