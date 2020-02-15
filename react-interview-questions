@@ -1,0 +1,82 @@
+How React works? How Virtual-Dom works in React?
+  React creates a virtual DOM. When state changes in a component it firstly runs a 'diffing' algorithm, which identifies what has
+  changed in the virtual DOM. The second step is reconciliation, where it updates the DOM with the results of diff.
+  The Virtual DOM is and abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation
+  deatails.
+
+What is ReactDom and what is the difference between ReactDOM and React?
+  As the name implies, ReactDOM is the glue between React and the DOM. Often, we will only use it for one single
+  thing: mounting with ReactDOM. Another useful feature of ReactDOM is ReactDOM.findDOMNode() which we can use to gain
+  direct access to a DOM element.
+
+What are the differeneces between a class component and functional component?
+  Class components allows us to use additional features such as local state and filecycle hooks. Also, to enable our
+  component to have direct access to our store and thus holds state.
+  When our component just receives props and renders them to the page, this is a 'stateless component', for which
+  a pure function ca be used. These are also called dumb components or presentational components.
+
+What is a higher order component?
+  is a function that takes a componet and returns a new component. 
+
+What is Redux?
+  The basic idea of Redux is that the entire application state is kept a single store.
+  The store is simply a javascript object. The only way to change the state is by firing
+  action from your application and then writing reducers for these actions that modify
+  the state. The entire state transition is kept inside reducers and should not have any
+  side-effects.
+  Redux is based on the idea that there should be only a single source of truth
+  for your application state, be it UI state like which tab is active or Date state like
+  the user profile deatails.
+
+What is Redux Thunk used for?
+  Redux thunk is middleware that allows us to write action creators that return a function instead of 
+  a action. The thunk can then be used to delay the dispatch of an action if a certain condition is met.
+  This allows us to handle the asyncronous dispatching of actions. The inner function receives the store methods dispatch
+  and getState as parameters.
+
+What is PureComponent?
+  PureComponent is exactly the same as Component except that it handles the shouldComponentUpdate method for us.
+  when props or state changes, PureComponent will do shallow comparison on both props and state. Component on the 
+  other hand won't compare current props and state to next out of the box. Thus, the component will re-render by 
+  default whenever shouldComponentUpdate is called.
+  When comparing previous props and state to next, a shallow comparison will check that primitives have the same value
+  (eg, 1 equals 1 or that ture equal true) and that the references are the same between more complex javascript values
+  like objects and arrays.
+
+Why setState() in React Async instead of Sync?
+  setState() does not immediately mutate this.state but creates a pending state transition. Accessing this.state after calling
+  this method can potentially return the existing value. There is no guarantee of synchronous operation of 
+  calls to setState and calls may be batched for performance gains.
+  This is because setState alters the state and causes rerendering. This can be an expensive operation and making it synchronous 
+  might leave the browser unresponsive. Thus the setState calls are asynchronous as well as batched for better UI experience
+  and performance.
+
+What are controlled and uncontrolled components in React?
+  A Controlled Component is one that takes its current value through props and notifies changes throught callbacks
+  like onChange. A parent component 'controls' it by handling the callback and managing its own state passing the new values
+  as props to the controlled component. You could also call this 'dumb component'.
+
+  A Uncontrolled Component is one that stores its own state internally, and you query the DOM using a ref 
+  to find its current value when you need it. This is a bit more like traditional HTML.
+
+Explain the components of Redux.
+  Redux is composed of the following components:
+   - Action -- Actions are payloads of information that send data from our application to our store. They are 
+   the only source of information for the store. We send them to the store using store.dispatch(). Primarly, They
+   are just an object desrives what happened in our app.
+
+   - Reducer -- Reducers spedify how the applications state changes in response to actions sent to the store.
+   Rememeber that actions only describe what happend, but don't describe how the applications state changes.
+   So this place determines how state will change to an action.
+
+   - Store -- The Store is the object that brings Action and Reducer thogether. The store has the following
+   responsibilities: Holds application state; Allows access to state via getState(); Allows state to be updated 
+   via dispatch(action); Register listeners via subscribe(listener); Handles unregistering of listeners via the 
+   function returned by subscribe(listener)
+
+Mobx vs Redux
+  Redux always have one large store in which all the states are stored. Mobx typically has more than one store.
+  
+  Redux uses a normal JavaScript object to store the data. On the other hand Mobx uses an observable to store the data.
+
+  Redux uses immutable state. In Mobx states can be overwritten.
