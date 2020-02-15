@@ -1,0 +1,82 @@
+Compiler Theory
+    JavaScript falls under the general category of "dynamic" or "interpreted"
+    languages, it is in fact a compiled language. It is not compiled well in
+    advance, as are many traditionally-compiled languages, nor are the results
+    of compilation portable among various distributed systems.
+    
+    1. Tokenizing/Lexing: breaking up a string of characters into meaningful
+       (to the language) chunks, called tokens.
+    
+    2. Parsing: taking a stream (array) of tokens and turning it into a tree of 
+       nested elements, which collectively represent the grammatical structure
+       of the program. This tree is called and "AST" (Abstract Syntax Tree)
+    
+    3. Code-Generation: the process of taking an AST and turning it into executable
+       code.
+
+    The JavaScript engine is vastly more complex that just those three steps.
+    For instance, in the proccess of parsing and code-generation, there are 
+    certainly steps to optmize the performance of the execution, including 
+    collapsing redundant elements, etc.
+
+    For JavaScript, the compilation that occurs happens, in many cases,
+    mere microseconds (or less) before the code is executed. To ensure
+    the fastest performance, JS engines use all kinds of tricks (like JITs,
+    which lazy compile and even hot re-compile, etc.)
+
+Lexical Scope
+    is scope that is defined at lexing time. In other words, lexical scope
+    is based on where variables and blocks of scope are authored, by you,
+    at write time, and thus is (mostly) set in stone by the time the lexer
+    processes your code.
+
+Scope look-up stops once it finds the first match. The same indentifier name
+can be specified at multiple layers of nested scope, which is called 
+"shadowing" (the inner identifier "shadows" the outer identifier). Regardless of
+shadowing, scope look-up always starts at the innermost scope being executed at
+the time, and works its way outward/upward until the first match, and stops.
+
+Global variables are also automatically properties of the global object 
+(window in browser).
+
+The eval(...) function in JavaScript takes a string as an argument, and treats the 
+contents of the string as if it had actually been authored code at that point in the
+program.
+
+IIFE Immediately Invoked Function Expression (function foo() {...})()
+
+let keyword attaches the variable declaration to the scope of whatever block
+it's contained in.
+
+const creates a block-scoped variable, but whose value is fixed. Any attempt to
+change that value at a later time results in error.
+
+Both function declarations and variable declarations are hoisted. But subtle detail
+(that can show up in code with multiple "duplicate" declarations) is that functions 
+are hoisted first, and then variables.
+
+Clousure is when a function is able to remember and access its lexical scope even
+when that function is executing outside its lexical scope.
+
+ES6 adds first-class syntax support for the concept of modules. When loaded via
+the module system, ES6 treats a file as a separate module. Each module can Both
+import other modules or specific API members, as well export own public API members.
+
+Clouseres can trip us up, for instance with loops, if we're not careful to recognize
+them and how they work. But they are also an immensely powerful tool, enabling
+patterns like modules in their various forms.
+Modules require two key characteristics: 
+    - an outer wrapping funcion being invoked, to create the enclosing scope
+    - the return value of the wrapping function must include reference to at
+      least one inner funcion that then has closure over the private inner 
+      scope or wrapper.
+
+JavaScript does not, in fact, have dynamic scope. It has lexical scope. But 
+the this mechanism is kind of like dynamic scope. 
+Lexical scope is write-time, whereas dynamic scope (and this) are runtime.
+Lexical scope cares where function was declared, but dynamic scope cares 
+where a function was called from.
+
+The ES6 solution, the arrow function , introduces a behavior called "lexical this",
+they discard all the normal rules for this biding, and instead take on the this 
+value of their immediate lexical enclosing scope, whatever it is.
