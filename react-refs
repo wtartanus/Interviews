@@ -1,0 +1,9 @@
+When to use refs:
+ - managing focus, text selection, or media playback.
+ - triggering imperative animations.
+ - integrating with third-party DOM libraries.
+
+Avoid using refs for anything that can be done declaratively.
+
+React.createRef()
+const node = this.myRef.current;
