@@ -1,0 +1,52 @@
+Factory Method
+ is a creational design pattern that provides an interface for creating objects in a superclass,
+ but allows subclasses to alter the type of objects that will be created.
+ The Factory Method separates product construction code from the code that actually uses the product.
+ Therefore it's easier to extend the product construction code independantly from the rest of the code.
+  Pros:
+   - avoid thight coupling between the creator and the concrete products.
+   - Single Responsibility Principle. You can move the product creation code into one place in the program
+     making the code easier to support
+   - Open/Closed Principles. You can introduce new types of products into the program without breaking existing 
+     client code.
+  Cons:
+   - The code may more complicated since you need to introduce a lot of new subclasses to implement the pattern.
+      The best case scenario is when your introducing the pattern into an existing hierarchy of creator classes.
+
+Singleton
+ is a creational design pattern that lets you ensure that a class has only one instance, while providing a global
+ access point to this instance.
+
+ Pros:
+  - You can be sure that a class has only a single instance 
+  - You gain a global access point to that instance
+  - The singleton object is initialized only when it's requested for the first time
+
+  Cons:
+   - can mask bad design, for instance, when the components of the program know too much about each other
+   - pattern requires special treatment in a multithreaded environment so that multiple threads won't create 
+     a singletion object several times.
+
+Proxy
+ is a structural design pattern that lets you provide a substitute or placeholder for another object.
+ A proxy controls access to the original object, allowing you to perform something either or after the request gets throught 
+ to the orginal object.
+  
+ Pros:
+  - you can control the service object without clients knowing about it.
+  - you can manage the lifecycle of the service object when clients don't care about it
+  - the proxy works even if the service object isn't ready or is not available
+  - Open/Close Principle, you can introduce new proxies without changing the service or clients.
+ 
+ Cons:
+  - the code may become more complicated since you need to introduce a lot of new classes 
+  - the response from the service might get delayed
+
+Observer
+ is a behavioral design pattern that lets you define a subscription mechanism to notify multiple objects about any event 
+ that happen to the object theyre observing
+
+Mediator
+ is behavioral design pattern that lets you reduce chaotic dependencies between object. The pattern restricts direct communication
+ between objects and forces them to collaborate only via a mediator object
+
