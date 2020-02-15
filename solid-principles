@@ -1,0 +1,16 @@
+S - single responsibility principle
+ states that every modlue or class should have responsibility over a single part of the funcionality provided 
+
+O - Open/closed principle
+ states that software entites should be open for extensions, but closed for modification
+
+L - liskov substitution principle
+ states that objects in a program should be replaceable with instances of their subtypes without altering
+ the correctness of that program.
+
+I - interface segregation principle
+ states that no client should be forced to depend on methods it does not use
+
+D - dependency inversion principle
+ states that high level modules should not depend on low-level modules. Both should depend on abstraction.
+ Abstraction should not depend on details. details should depend on abstraction
