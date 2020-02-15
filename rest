@@ -1,0 +1,21 @@
+Representational State Transfer
+
+In the REST architecture, client send request to retrive or modify resources,
+and servers send responses to these requests.
+
+GET - retrive a specific resources or a collection of resources
+POST - create new resource 
+PUT - update a specific resource 
+DELETE - remove a specific resource by id
+
+CRUD - CREATE, READ, UPDATE, DELETE
+
+Pros: 
+ - the REST API is reused by all frontends
+ - The REST API is abstraction layer
+ - The effort to think out a REST data model often pays dividends repaying its
+   costs, because is then easier to build future apps on top of it, and will need
+   to change less and the product evolves.
+- Security considerations are more cookbook with REST, and you can implement 
+  fine-grained access controls. Direct to DB security doesn't work well when clients
+  are exposed
