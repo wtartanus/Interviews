@@ -1,0 +1,25 @@
+Statement
+    In a computer language, a group of words, numbers, and operators that performs
+    a specific task is a statement.
+
+Expression
+    is any reference to a variable or value, or set of variables and values
+    combined with operators
+
+Operators 
+    are how we perform actions on viarables and values.
+
+Blocks
+    in code we often need to group a series of statements together, which we often 
+    call a block. In JavaScript, a block is defined by wrapping one or more
+    statements inside a curly-brace pair {}
+
+Loops
+  while (num > 0) {}
+  do {} while (num > 0)
+  for (var i = 0; i <= 9; i++) {}
+
+Scope 
+    is basically a collection of variables as well as the rules for how those 
+    variables are accessed by name. In JavaScript, each function gets its 
+    own scope.
